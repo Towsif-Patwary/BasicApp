@@ -1,0 +1,61 @@
+﻿@page
+@model Basic.UI.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h2>Employee List</h2>
+
+@if (Model.Employees != null && Model.Employees.Count() > 0)
+{
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.Code</td>
+                <td>@employee.Name</td>
+                <td>@employee.Address</td>
+                <td>@employee.Phone</td>
+                <td>@employee.Email</td>
+                <td>@employee.Company</td>
+                <td>
+                    <a asp-page="./Update" asp-route-codeOrName="@employee.Code" class="btn btn-primary">Edit</a>
+                    <form method="post" onsubmit="return confirmAction(this);">
+                        <input type="hidden" name="codeOrName" value="@employee.Code" />
+                        <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+}
+else
+{
+    <p>No data found !! </p>
+}
+
+<a asp-page="./Create" class="btn btn-primary">Add New Employee</a>
+
+
+<script>
+function confirmAction(form) {
+    if (form.action.value === "delete") {
+        return confirm('Are you sure you want to delete this employee?');
+    }
+    return true;
+}
+</script>

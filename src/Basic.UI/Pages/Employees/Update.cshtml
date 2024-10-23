@@ -1,0 +1,53 @@
+﻿
+@page "{codeOrName?}"
+@model Basic.UI.Pages.Employees.UpdateModel
+
+@{
+    ViewData["Title"] = "Update Employee";
+}
+
+<h2>Update Employee</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Employee.Name"></label>
+        <input asp-for="Employee.Name" class="form-control" />
+        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Address"></label>
+        <input asp-for="Employee.Address" class="form-control" />
+        <span asp-validation-for="Employee.Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Phone"></label>
+        <input asp-for="Employee.Phone" class="form-control" />
+        <span asp-validation-for="Employee.Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Email"></label>
+        <input asp-for="Employee.Email" class="form-control" />
+        <span asp-validation-for="Employee.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Company"></label>
+        <select asp-for="Employee.Company" class="form-control">
+            <option value="">-- Select a Company --</option>
+            @foreach (var company in Model.Companies)
+            {
+                <option value="@company.Code" selected="@company.Code == Model.Employee.Company">
+                    @company.Name
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Employee.Company" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-primary" />
+</form>
+
+<a asp-page="/Employees/Index" class="btn btn-secondary">Back to Employee List</a>

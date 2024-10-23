@@ -1,0 +1,35 @@
+<h2>{{ id ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="code">Code</label>
+    <input id="code" formControlName="code" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address" formControlName="address" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input id="phone" formControlName="phone" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="company">Company</label>
+    <input id="company" formControlName="company" class="form-control" />
+  </div>
+
+  <button pButton type="submit" label="Submit"></button>
+</form>

@@ -1,0 +1,26 @@
+﻿
+@page 
+@model Basic.UI.Pages.Companies.CreateModel
+@{
+    ViewData["Title"] = "Add Company";
+}
+
+<h3>Add New Company</h3>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert @(Model.IsSuccess ? "alert-success" : "alert-danger")">
+        @Model.Message
+    </div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" id="Name" class="form-control" asp-for="@Model.Company.Name" />
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Add Company</button>
+    </div>
+</form>
